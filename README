@@ -9,3 +9,28 @@ sendMysql(): directly use mysql syntax
 createTable(): create a mysql database table
 dropTable(): drop a mysql database table
 queryAll(): return all the table values
+
+Here is an example:
+// build up instance
+let inline_test = new Js_Orm({
+  host:     host,
+  port:     port,
+  username: username, 
+  password: password,
+  user:     user,
+})
+
+inline_test.connect()
+
+inline_test.createTable({
+  tableName:"Score", 
+  data:{tableName: "Score",
+        attribute:["ID", "Name", "score"], 
+        attributeType:["varchar", "varchar", "int"], 
+        attributeLength:[20,20, 20]}
+})
+
+inline_test.create({tableName:"Score", data: ['r11000001', 'Iven', 100]})
+inline_test.create({tableName:"Score", data: ['r11000002', 'David', 100]})
+inline_test.queryAll("Score")
+inline_test.dropTable("Score")
