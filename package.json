@@ -1,0 +1,17 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Test_interface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ruxiuhsiao <ruxiuhsiao@gmail.com>",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "readlines": "^0.2.0",
+    "websocket": "^1.0.34",
+    "ws": "^8.13.0"
+  }
+}
