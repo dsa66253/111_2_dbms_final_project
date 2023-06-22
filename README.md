@@ -90,13 +90,24 @@ inline_test.dropTable("Score")
 #### the following document may be useful
 
 Class Js_Orm with the following function:
+
 connect(): create connection to mysql server
+
 test_connection(): test whether client is linked to server
+
 close(): close the connection to server
+
 sendSub(): subscribe to other client
+
 sendPub(): publish message to subscriber
+
 sendBroadcast(): broadcast message to all the clients
+
 sendMysql(): directly use mysql syntax
+
 createTable(): create a mysql database table
+
 dropTable(): drop a mysql database table
+
 queryAll(): return all the table values
+
