@@ -26,7 +26,7 @@ Our system environment is listed below:
 3. coompile ./pub_sub_server/server.cpp
 This step would be little complicated. You can checkout [Embedding Python in Another Application](https://docs.python.org/3/extending/embedding.html)
 In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin -lpython3.9 -ldl -framework CoreFoundation -I/Library/Frameworks/Python.framework/Versions/3.9/include/python3.9`
-4. change a.out generated on 1. 3. step
+4. change a.out generated on step 3 to `finalProject`
 ### compile mysql from source code
 1. find out mysql source corresponding your machin at [HERE] (https://dev.mysql.com/downloads/mysql/)
 2. unzip the donwloaded directory as `mysql-8.0.33`. Let's say it's under the directory `/Users/kobe/Downloads`
@@ -44,11 +44,50 @@ Here, we use change the password of root to 1234. You can create any password yo
 12. kill mysql process by any method you like.
 ### integrate pub/sub module into mysql server
 From the above steps, we have already build our pub/sub module into binary code and install conventional mysql server. In this step, the inegration of our module and mysql server would be performed.
-    1. 
+1.  copy the `finalProject` binary in to `/usr/local/mysql/bin`
+2.  under `/usr/local/mysql` use command `sudo bin/mysqld_safe --user=mysql` to lunach mysql server and our pub/sub module
+After this step, we have already run the msyql server and our module which listen on the default port `1235`.
 
+Then, you can follow the next chapter to use the ORM called Js_Orm we develop to communication with our pub/sub module.
 
+## ORM
+Now, it's time to use Js_Orm in your frontend application.
+The following is class diagram for Js_Orm. It can help under Js_Orm faster.
+![class diagram for Js_Orm](https://github.com/dsa66253/111_2_dbms_final_project/public/classDigramORM.jpg)
 
-
+### Quick start
+#### create connection
+```js
+let inline_test = new Js_Orm({
+    host:     '127.0.0.1',
+    port:     1235,
+    username: 'root', 
+    password: '1234',
+    user: 'demo_username'
+})
+test connection
+```
+#### create table
+```js
+inline_test.createTable({
+  tableName:"Score", 
+  data:{tableName: "Score",
+        attribute:["ID", "Name", "score"], 
+        attributeType:["varchar", "varchar", "int"], 
+        attributeLength:[20,20, 20]}
+})
+```
+#### insert row into table and query all
+```js
+inline_test.create({tableName:"Score", data: ['r11000001', 'Iven', 100]})
+inline_test.create({tableName:"Score", data: ['r11000002', 'David', 100]})
+inline_test.queryAll("Score")
+```
+#### drop the table just created
+```js
+inline_test.dropTable("Score")
+```
+#### the following document may be useful
 
 Class Js_Orm with the following function:
 connect(): create connection to mysql server
@@ -61,28 +100,3 @@ sendMysql(): directly use mysql syntax
 createTable(): create a mysql database table
 dropTable(): drop a mysql database table
 queryAll(): return all the table values
-
-Here is an example:
-// build up instance
-let inline_test = new Js_Orm({
-  host:     host,
-  port:     port,
-  username: username, 
-  password: password,
-  user:     user,
-})
-
-inline_test.connect()
-
-inline_test.createTable({
-  tableName:"Score", 
-  data:{tableName: "Score",
-        attribute:["ID", "Name", "score"], 
-        attributeType:["varchar", "varchar", "int"], 
-        attributeLength:[20,20, 20]}
-})
-
-inline_test.create({tableName:"Score", data: ['r11000001', 'Iven', 100]})
-inline_test.create({tableName:"Score", data: ['r11000002', 'David', 100]})
-inline_test.queryAll("Score")
-inline_test.dropTable("Score")
