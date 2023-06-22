@@ -1,8 +1,11 @@
 # Introduction
-* This is 111-2 DBMS final project.
-* We are 7-th group.
-* Members: 伏宇寬, 蕭如秀, 周宥辰
-* We have intergrated our pub/sub module into mysql server and develop an ORM library developed on nodejs environment. By using pub/sub module and ORM library, user can enjoy pub/sub functionality in frontend application instead of backend application.
+This is 111-2 DBMS final project.
+
+We are 7-th group.
+
+Members: 伏宇寬, 蕭如秀, 周宥辰
+
+We have intergrated our pub/sub module into mysql server and develop an ORM library developed on nodejs environment. By using pub/sub module and ORM library, user can enjoy pub/sub functionality in frontend application instead of backend application.
 The following chapters would cover how to install our pub/sub module and the quick start for ORM library.
 # pub/sub module
 
@@ -16,7 +19,8 @@ Our system environment is listed below:
 6. nodejs version: v18.14.2
 
 ## Installation
-### prepare our module under the directory `FINAL_code`
+
+### prepare our module under the directory `111_2_dbms_final_project`
 1. run ./pub_sub_server/py2str.py to generate server.txt
 2. copy all the content in server.txt and pass it into function PyRun_SimpleString as parameter in ./pub_sub_server/server.cpp
 3. coompile ./pub_sub_server/server.cpp
