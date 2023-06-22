@@ -31,7 +31,7 @@ In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Ve
 1. find out mysql source corresponding your machin at [HERE] (https://dev.mysql.com/downloads/mysql/)
 2. unzip the donwloaded directory as `mysql-8.0.33`. Let's say it's under the directory `/Users/kobe/Downloads`
 3. create a directory named `mysql_build` under the directory `/Users/kobe/Downloads`.
-4. install cmake by entering the command `brew install cmake` on terminal. check out [reference](https://formulae.brew.sh/formula/cmake)
+4. install cmake by entering the command `brew install cmake` on terminal. [What is CMake?](https://formulae.brew.sh/formula/cmake)
 5. replace the `mysqld_safe.sh` under the `/Users/kobe/Downloads/mysql-8.0.33/scripts` by our script `/Final_code/pub_sub_server/mysqld_safe.sh`
 6. open a teminal and change to the directory to `mysql_build` we just created and enter the command `cmake /Users/kobe/Downloads/mysql-8.0.33 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=/usr/local/Cellar/boost/1.81.0_1` to prepare make file for msyql compilation. This parameter would be machine-dpendent. Take it carefully.
 7. use the step 6 terminal and `make -j4` to build mysql project
@@ -43,7 +43,7 @@ After step 8, the mysql server is already installed on the machine. However, the
 10. the first time to launch mysql server `sudo bin/mysqld_safe --user=mysql`
 11. login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
 
-Here, we use change the password of root to 1234. You can create any password you like.
+Here, we use change the password of root to `1234`. You can create any password you like.
 
 12. kill mysql process by any method you like.
 ### integrate pub/sub module into mysql server
