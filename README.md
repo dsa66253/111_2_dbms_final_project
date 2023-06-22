@@ -52,7 +52,9 @@ Then, you can follow the next chapter to use the ORM called Js_Orm we develop to
 
 ## ORM
 Now, it's time to use Js_Orm in your frontend application.
-The following is class diagram for Js_Orm. It can help under Js_Orm faster.
+The following is class diagram for Js_Orm. It can help understand Js_Orm faster.
+
+
 ![class diagram for Js_Orm](https://github.com/dsa66253/111_2_dbms_final_project/blob/main/public/classDigramORM.jpg)
 
 ### Quick start
