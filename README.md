@@ -21,9 +21,9 @@ Our system environment is listed below:
 ## Installation
 
 ### prepare our module under the directory `111_2_dbms_final_project`
-1. run ./pub_sub_server/py2str.py to generate server.txt
-2. copy all the content in server.txt and pass it into function PyRun_SimpleString as parameter in ./pub_sub_server/server.cpp
-3. coompile ./pub_sub_server/server.cpp
+1. run `./pub_sub_server/py2str.py` to generate server.txt
+2. copy all the content in server.txt and pass it into function PyRun_SimpleString as parameter in `./pub_sub_server/server.cpp`
+3. coompile `./pub_sub_server/server.cpp`
 This step would be little complicated. You can checkout [Embedding Python in Another Application](https://docs.python.org/3/extending/embedding.html)
 In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin -lpython3.9 -ldl -framework CoreFoundation -I/Library/Frameworks/Python.framework/Versions/3.9/include/python3.9`
 4. change a.out generated on step 3 to `finalProject`
