@@ -36,16 +36,19 @@ In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Ve
 6. open a teminal and change to the directory to `mysql_build` we just created and enter the command `cmake /Users/kobe/Downloads/mysql-8.0.33 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=/usr/local/Cellar/boost/1.81.0_1` to prepare make file for msyql compilation. This parameter would be machine-dpendent. Take it carefully.
 7. use the 2. 6. terminal and `make -j4` to build mysql project
 8. `sudo make install` to install mysql server
+
 After 2. 8 step, the mysql server is already installed on the machine. However, the post-installation step need to be taken by [official document](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)
 9. initialize mysql server by the following commands `cd /usr/local/mysql`, `mkdir mysql-files`, `chown mysql:mysql mysql-files`, `chmod 750 mysql-files`, and `bin/mysqld --initialize --user=mysql`. 
-10. first time launch mysql server `sudo bin/mysqld_safe --user=mysql`
-11. first login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
+10. the first time to launch mysql server `sudo bin/mysqld_safe --user=mysql`
+11. login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
+
 Here, we use change the password of root to 1234. You can create any password you like.
 12. kill mysql process by any method you like.
 ### integrate pub/sub module into mysql server
 From the above steps, we have already build our pub/sub module into binary code and install conventional mysql server. In this step, the inegration of our module and mysql server would be performed.
 1.  copy the `finalProject` binary in to `/usr/local/mysql/bin`
 2.  under `/usr/local/mysql` use command `sudo bin/mysqld_safe --user=mysql` to lunach mysql server and our pub/sub module
+
 After this step, we have already run the msyql server and our module which listen on the default port `1235`.
 
 Then, you can follow the next chapter to use the ORM called Js_Orm we develop to communication with our pub/sub module.
