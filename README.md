@@ -16,29 +16,29 @@ Our system environment is listed below:
 6. nodejs version: v18.14.2
 
 ## Installation
-1. prepare our module under the directory `FINAL_code`
-    1. run ./pub_sub_server/py2str.py to generate server.txt
-    2. copy all the content in server.txt and pass it into function PyRun_SimpleString as parameter in ./pub_sub_server/server.cpp
-    3. coompile ./pub_sub_server/server.cpp
+### prepare our module under the directory `FINAL_code`
+1. run ./pub_sub_server/py2str.py to generate server.txt
+2. copy all the content in server.txt and pass it into function PyRun_SimpleString as parameter in ./pub_sub_server/server.cpp
+3. coompile ./pub_sub_server/server.cpp
 This step would be little complicated. You can checkout [Embedding Python in Another Application](https://docs.python.org/3/extending/embedding.html)
 In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin -lpython3.9 -ldl -framework CoreFoundation -I/Library/Frameworks/Python.framework/Versions/3.9/include/python3.9`
-    4. change a.out generated on 1. 3. step
-2. compile mysql from source code
-    1. find out mysql source corresponding your machin at [HERE] (https://dev.mysql.com/downloads/mysql/)
-    2. unzip the donwloaded directory as `mysql-8.0.33`. Let's say it's under the directory `/Users/kobe/Downloads`
-    3. create a directory named `mysql_build` under the directory `/Users/kobe/Downloads`.
-    4. install cmake by entering the command `brew install cmake` on terminal. check out [reference](https://formulae.brew.sh/formula/cmake)
-    5. replace the `mysqld_safe.sh` under the `/Users/kobe/Downloads/mysql-8.0.33/scripts` by our script `/Final_code/pub_sub_server/mysqld_safe.sh`
-    6. open a teminal and change to the directory to `mysql_build` we just created and enter the command `cmake /Users/kobe/Downloads/mysql-8.0.33 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=/usr/local/Cellar/boost/1.81.0_1` to prepare make file for msyql compilation. This parameter would be machine-dpendent. Take it carefully.
-    7. use the 2. 6. terminal and `make -j4` to build mysql project
-    8. `sudo make install` to install mysql server
+4. change a.out generated on 1. 3. step
+### compile mysql from source code
+1. find out mysql source corresponding your machin at [HERE] (https://dev.mysql.com/downloads/mysql/)
+2. unzip the donwloaded directory as `mysql-8.0.33`. Let's say it's under the directory `/Users/kobe/Downloads`
+3. create a directory named `mysql_build` under the directory `/Users/kobe/Downloads`.
+4. install cmake by entering the command `brew install cmake` on terminal. check out [reference](https://formulae.brew.sh/formula/cmake)
+5. replace the `mysqld_safe.sh` under the `/Users/kobe/Downloads/mysql-8.0.33/scripts` by our script `/Final_code/pub_sub_server/mysqld_safe.sh`
+6. open a teminal and change to the directory to `mysql_build` we just created and enter the command `cmake /Users/kobe/Downloads/mysql-8.0.33 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=/usr/local/Cellar/boost/1.81.0_1` to prepare make file for msyql compilation. This parameter would be machine-dpendent. Take it carefully.
+7. use the 2. 6. terminal and `make -j4` to build mysql project
+8. `sudo make install` to install mysql server
 After 2. 8 step, the mysql server is already installed on the machine. However, the post-installation step need to be taken by [official document](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)
-    9. initialize mysql server by the following commands `cd /usr/local/mysql`, `mkdir mysql-files`, `chown mysql:mysql mysql-files`, `chmod 750 mysql-files`, and `bin/mysqld --initialize --user=mysql`. 
-    10. first time launch mysql server `sudo bin/mysqld_safe --user=mysql`
-    11. first login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
+9. initialize mysql server by the following commands `cd /usr/local/mysql`, `mkdir mysql-files`, `chown mysql:mysql mysql-files`, `chmod 750 mysql-files`, and `bin/mysqld --initialize --user=mysql`. 
+10. first time launch mysql server `sudo bin/mysqld_safe --user=mysql`
+11. first login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
 Here, we use change the password of root to 1234. You can create any password you like.
-    12. kill mysql process by any method you like.
-3. integrate pub/sub module into mysql server
+12. kill mysql process by any method you like.
+### integrate pub/sub module into mysql server
 From the above steps, we have already build our pub/sub module into binary code and install conventional mysql server. In this step, the inegration of our module and mysql server would be performed.
     1. 
 
