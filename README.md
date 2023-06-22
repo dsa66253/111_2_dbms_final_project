@@ -38,11 +38,13 @@ In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Ve
 8. `sudo make install` to install mysql server
 
 After 2. 8 step, the mysql server is already installed on the machine. However, the post-installation step need to be taken by [official document](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)
+
 9. initialize mysql server by the following commands `cd /usr/local/mysql`, `mkdir mysql-files`, `chown mysql:mysql mysql-files`, `chmod 750 mysql-files`, and `bin/mysqld --initialize --user=mysql`. 
 10. the first time to launch mysql server `sudo bin/mysqld_safe --user=mysql`
 11. login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
 
 Here, we use change the password of root to 1234. You can create any password you like.
+
 12. kill mysql process by any method you like.
 ### integrate pub/sub module into mysql server
 From the above steps, we have already build our pub/sub module into binary code and install conventional mysql server. In this step, the inegration of our module and mysql server would be performed.
