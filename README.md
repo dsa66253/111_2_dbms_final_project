@@ -7,6 +7,10 @@ Members: 伏宇寬, 蕭如秀, 周宥辰
 
 We have intergrated our pub/sub module into mysql server and develop an ORM library developed on nodejs environment. By using pub/sub module and ORM library, user can enjoy pub/sub functionality in frontend application instead of backend application.
 The following chapters would cover how to install our pub/sub module and the quick start for ORM library.
+
+Here is the overview of our system.
+
+![system overview](https://github.com/dsa66253/111_2_dbms_final_project/blob/main/public/systemOverview.png.jpg)
 # pub/sub module
 
 In this chapter, we you cover how to compile our pub/sub module and integrate it in mysql server.
