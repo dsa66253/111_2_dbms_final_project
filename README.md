@@ -41,23 +41,23 @@ In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Ve
 7. use the step 6 terminal and `make -j4` to build mysql project
 8. `sudo make install` to install mysql server
 
-After step 8, the mysql server is already installed on the machine. However, the post-installation step need to be taken by [official document](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)
+After step 8, the mysql server is already installed on the machine. However, the post-installation step need to be taken by [official document](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html) .
 
 9. initialize mysql server by the following commands `cd /usr/local/mysql`, `mkdir mysql-files`, `chown mysql:mysql mysql-files`, `chmod 750 mysql-files`, and `bin/mysqld --initialize --user=mysql`. 
 10. the first time to launch mysql server `sudo bin/mysqld_safe --user=mysql`
 11. login mysql server and set up user and password by command `mysql -u root -p` and `ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';`
 
-Here, we use change the password of root to `1234`. You can create any password you like.
+Here, we change the password of root to `1234`. You can create any password you like.
 
 12. kill mysql process by any method you like.
 ### integrate pub/sub module into mysql server
 From the above steps, we have already build our pub/sub module into binary code and install conventional mysql server. In this step, the inegration of our module and mysql server would be performed.
-1.  copy the `finalProject` binary in to `/usr/local/mysql/bin`
+1.  copy the `finalProject` binary to `/usr/local/mysql/bin`
 2.  under `/usr/local/mysql` use command `sudo bin/mysqld_safe --user=mysql` to lunach mysql server and our pub/sub module
 
-After this step, we have already run the msyql server and our module which listen on the default port `1235`.
+After this step, we have already run the msyql server and our module which listens on the default port `1235`.
 
-Then, you can follow the next chapter to use the ORM called Js_Orm we develop to communication with our pub/sub module.
+Then, you can follow the next chapter to use the ORM called Js_Orm we develop to interact with our pub/sub module.
 
 ## ORM
 Now, it's time to use Js_Orm in your frontend application.
