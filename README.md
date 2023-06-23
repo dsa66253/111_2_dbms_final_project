@@ -32,7 +32,7 @@ This step would be little complicated. You can checkout [Embedding Python in Ano
 In our machine, we use `g++ server.cpp -L/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin -lpython3.9 -ldl -framework CoreFoundation -I/Library/Frameworks/Python.framework/Versions/3.9/include/python3.9`
 4. change a.out generated on step 3 to `finalProject`
 ### compile mysql from source code
-1. find out mysql source corresponding your machin at [HERE] (https://dev.mysql.com/downloads/mysql/)
+1. find out mysql source corresponding your machin at [HERE](https://dev.mysql.com/downloads/mysql/)
 2. unzip the donwloaded directory as `mysql-8.0.33`. Let's say it's under the directory `/Users/kobe/Downloads`
 3. create a directory named `mysql_build` under the directory `/Users/kobe/Downloads`.
 4. install cmake by entering the command `brew install cmake` on terminal. [What is CMake?](https://formulae.brew.sh/formula/cmake)
