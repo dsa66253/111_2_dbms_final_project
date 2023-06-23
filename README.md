@@ -10,7 +10,7 @@ The following chapters would cover how to install our pub/sub module and the qui
 
 Here is the overview of our system.
 
-![system overview](https://github.com/dsa66253/111_2_dbms_final_project/blob/main/public/systemOverview.png.jpg)
+![system overview](https://github.com/dsa66253/111_2_dbms_final_project/blob/main/public/systemOverview.png)
 # pub/sub module
 
 In this chapter, we you cover how to compile our pub/sub module and integrate it in mysql server.
